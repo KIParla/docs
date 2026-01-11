@@ -1,0 +1,6 @@
+= KIParla Documentation
+
+Welcome! Choose a project:
+
+* xref:KIP::index.adoc[KIP]
+* xref:KIPasti::index.adoc[KIPasti]

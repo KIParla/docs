@@ -2,5 +2,9 @@
 
 Welcome! Choose a project:
 
+* xref:lemmatization::index.adoc[Progetto lemmatizzazione]
+
+
 * xref:KIP::index.adoc[KIP]
 * xref:KIPasti::index.adoc[KIPasti]
+

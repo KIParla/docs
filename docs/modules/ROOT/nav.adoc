@@ -1,1 +1,3 @@
 * xref:index.adoc[Home]
+* xref:release-guide.adoc[Release Guide]
+* xref:collection-automation.adoc[Collection Automation]

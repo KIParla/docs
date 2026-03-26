@@ -1,0 +1,72 @@
+= Releasing a New Version of a KIParla Module
+
+This guide describes the steps to release a new version of any KIParla module (KIP, KIPasti, ParlaTO, ParlaBO) from the `dev` branch to `main`.
+
+KIParla follows https://semver.org[Semantic Versioning]:
+
+* *Patch* (x.y.**z**) — data corrections, typo fixes, metadata updates
+* *Minor* (x.**y**.0) — new features, new files, backwards-compatible changes
+* *Major* (**x**.0.0) — breaking changes to format or structure
+
+== Step 1: Make your changes on `dev`
+
+All work happens on the `dev` branch. Make your edits, then commit:
+
+[source,bash]
+----
+git checkout dev
+# ... make changes ...
+git add <changed files>
+git commit -m "fix: <short description of what was corrected>"
+git push origin dev
+----
+
+== Step 2: Bump the version in `CITATION.cff`
+
+Edit `CITATION.cff` and update the `version` field to the new version number:
+
+[source,yaml]
+----
+version: x.y.z
+----
+
+Commit the change:
+
+[source,bash]
+----
+git add CITATION.cff
+git commit -m "chore: bump version to x.y.z"
+git push origin dev
+----
+
+== Step 3: Open a Pull Request from `dev` to `main`
+
+On GitHub, open a PR from `dev` → `main` with:
+
+* A descriptive title (e.g. _"Release v1.1.1 – normalize Intonation feature values"_)
+* A summary of what was changed and why
+
+Review the diff, then merge.
+
+== Step 4: Tag the release on `main`
+
+After merging, pull `main` locally and create an annotated tag:
+
+[source,bash]
+----
+git checkout main
+git pull origin main
+git tag -a vx.y.z -m "Release vx.y.z"
+git push origin vx.y.z
+----
+
+== Step 5: Create a GitHub Release
+
+On GitHub, go to *Releases → Draft a new release*, select the tag you just pushed, and publish.
+Include a changelog summarizing the changes since the previous version.
+
+== Notes
+
+* Repeat these steps independently for each module that was changed.
+* If multiple modules are released together, keep their version numbers in sync.
+* The `CITATION.cff` on `dev` may lag behind `main` after a release — always verify and update it at the start of a new release cycle.

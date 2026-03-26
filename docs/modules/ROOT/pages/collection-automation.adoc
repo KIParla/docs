@@ -1,0 +1,75 @@
+= Collection Automation
+
+`KIParla-collection` is automatically rebuilt whenever any module publishes a new GitHub Release.
+This page describes how the automation works and how to maintain it.
+
+== Overview
+
+The pipeline has two sides:
+
+* **Module repos** (KIP, KIPasti, ParlaBO, ParlaTO) — each has a workflow that fires when a release is published and notifies the collection.
+* **KIParla-collection** — has a workflow that receives the notification, pulls fresh data from all modules, rebuilds the collection, and commits the result.
+
+== What the build does
+
+When triggered, the `KIParla-collection` build workflow:
+
+. Clones the latest `main` branch of each module repo.
+. Copies all `.tsv` files into `tsv/` and all `.eaf` files into `eaf/`.
+. Regenerates `linear-jefferson/` and `linear-orthographic/` by running `tsv2formats.py` on every TSV file.
+. Merges `participants.tsv` and `conversations.tsv` from all modules using `tools/merge_metadata.py`.
+. Commits and pushes any changes back to `KIParla-collection`.
+
+The build is idempotent: if no files changed, no commit is made.
+
+== Metadata merging
+
+Metadata is merged by `https://github.com/KIParla/tools[tools/merge_metadata.py]`.
+
+The script normalises column differences between modules before merging:
+
+[cols="1,1,1", options="header"]
+|===
+| Module | Participants columns | Note
+| KIP | `school-region`, no `study-level` | `school-region` is renamed to `birth-region`; `study-level` is left empty
+| KIPasti | `birth-region`, `study-level`, `L1` | `L1` is dropped from the merged output
+| ParlaBO | `birth-region`, `study-level`, `L1` | `L1` is dropped from the merged output
+| ParlaTO | `birth-region`, `study-level` | —
+|===
+
+The merged `participants.tsv` keeps these columns: `code`, `occupation`, `gender`, `conversations`, `birth-region`, `age-range`, `study-level`.
+
+The merged `conversations.tsv` keeps these columns: `code`, `type`, `duration`, `participants-number`, `participants`, `participants-relationship`, `moderator`, `topic`, `year`, `collection-point`.
+
+Rows with duplicate `code` values are deduplicated, keeping the first occurrence (module order: KIP → KIPasti → ParlaBO → ParlaTO).
+
+== Trigger mechanism
+
+The module-to-collection notification uses a GitHub https://docs.github.com/en/rest/repos/repos#create-a-repository-dispatch-event[`repository_dispatch`] event.
+
+Each module repo holds a workflow at `.github/workflows/notify-collection.yml` that sends a `module-released` event to `KIParla-collection` when a release is published.
+This requires a GitHub Personal Access Token (PAT) with `Contents: Read and Write` permission on `KIParla-collection`, stored as a repository secret named `COLLECTION_TOKEN` in each module repo.
+
+To trigger a rebuild manually (without publishing a release), go to *KIParla-collection → Actions → Build Collection → Run workflow*.
+
+== Adding a new module
+
+To include a new module in the collection build:
+
+. Add a `git clone` line for the new repo in `.github/workflows/build.yml` inside `KIParla-collection`.
+. Add the cloned path to the `--modules` argument of the `merge_metadata.py` call.
+. If the new module has non-standard column names in its metadata, add a rename mapping to the `COLUMN_RENAMES` dict in `tools/merge_metadata.py`.
+. Add the `notify-collection.yml` workflow to the new module repo and set its `COLLECTION_TOKEN` secret.
+
+== Troubleshooting
+
+Build failed during metadata merge::
+Check that all module repos have a `metadata/participants.tsv` and `metadata/conversations.tsv` with a `code` column.
+If a module added or renamed a column, update `COLUMN_RENAMES` or the target column lists in `merge_metadata.py`.
+
+Build triggered but no changes committed::
+All files were already up to date. This is expected behaviour.
+
+Module workflow cannot dispatch to collection::
+The `COLLECTION_TOKEN` secret in the module repo may be expired or have insufficient permissions.
+Regenerate the PAT and update the secret.

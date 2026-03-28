@@ -70,3 +70,57 @@ Include a changelog summarizing the changes since the previous version.
 * Repeat these steps independently for each module that was changed.
 * If multiple modules are released together, keep their version numbers in sync.
 * The `CITATION.cff` on `dev` may lag behind `main` after a release — always verify and update it at the start of a new release cycle.
+
+== Automated release workflow
+
+Steps 4 and 5 (tagging and publishing the GitHub Release) are automated by the `release.yml` workflow present in every module repository.
+
+=== How it works
+
+After merging your PR to `main` (which already includes the version bump in `CITATION.cff`), trigger the release workflow manually:
+
+. Go to *Actions → Release Module → Run workflow* on GitHub.
+. Optionally add release notes in the input field.
+. Click *Run workflow*.
+
+The workflow will:
+
+. Read the version number directly from `CITATION.cff` on `main`.
+. Verify that the tag does not already exist (prevents accidental double releases).
+. Create and push an annotated tag `vx.y.z`.
+. Publish a GitHub Release with that tag.
+
+Once the release is published, the `notify-collection.yml` workflow fires automatically and triggers a collection rebuild (see <<collection-rebuild, Collection rebuild>> below).
+
+[WARNING]
+====
+Make sure the version in `CITATION.cff` on `main` is correct before running this workflow. The workflow reads it directly and does not prompt for confirmation.
+====
+
+[#collection-rebuild]
+== Collection rebuild
+
+Every time a module release is published, the `build.yml` workflow in https://github.com/KIParla/KIParla-collection[KIParla-collection] runs automatically. No manual action is required.
+
+=== What the build workflow does
+
+. Clones the latest `main` of all four module repos (KIP, KIPasti, ParlaBO, ParlaTO).
+. Syncs all TSV and EAF files into the collection.
+. Regenerates the linear-jefferson and linear-orthographic formats using `tools/tsv2formats.py`.
+. Merges metadata from all modules using `tools/merge_metadata.py`.
+. Increments the *patch version* of the collection in `CITATION.cff` and updates `date-released`.
+. Commits all changes and pushes to `main` of KIParla-collection.
+. Creates an annotated tag and GitHub Release for the new collection version, linking back to the module release that triggered the rebuild.
+
+If no files changed (e.g. the module release only updated documentation), no commit or release is created.
+
+=== Triggering a manual rebuild
+
+You can trigger the collection build at any time without a module release:
+
+[source,bash]
+----
+gh workflow run build.yml --repo KIParla/KIParla-collection
+----
+
+Or via *Actions → Build Collection → Run workflow* on GitHub.

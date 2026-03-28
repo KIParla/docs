@@ -48,22 +48,33 @@ On GitHub, open a PR from `dev` → `main` with:
 
 Review the diff, then merge.
 
-== Step 4: Tag the release on `main`
+== Step 4: Run the release workflow
 
-After merging, pull `main` locally and create an annotated tag:
+Steps 4 and 5 are fully automated. After merging your PR to `main`:
 
-[source,bash]
-----
-git checkout main
-git pull origin main
-git tag -a vx.y.z -m "Release vx.y.z"
-git push origin vx.y.z
-----
+. Go to *Actions → Release Module → Run workflow* on GitHub.
+. Click *Run workflow* — no inputs needed.
 
-== Step 5: Create a GitHub Release
+The workflow will:
 
-On GitHub, go to *Releases → Draft a new release*, select the tag you just pushed, and publish.
-Include a changelog summarizing the changes since the previous version.
+. Read the version from `CITATION.cff` on `main`.
+. Stamp that version into `docs/antora.yml` (so the Antora version dropdown shows it correctly) and push the change.
+. Verify the tag does not already exist.
+. Create and push an annotated tag `vx.y.z`.
+. Open a *draft* GitHub Release pre-filled with auto-generated release notes (commits since the last tag).
+
+== Step 5: Review and publish the draft release
+
+Go to *Releases* on GitHub. You will find a draft named `vx.y.z`.
+
+. Review the auto-generated notes.
+. Edit, reorder, or add context as needed.
+. Click *Publish release*.
+
+Publishing triggers two automated workflows in parallel:
+
+* `notify-collection.yml` → rebuilds xref:collection::index.adoc[KIParla-collection] (see <<collection-rebuild,below>>).
+* `update-changelog.yml` → prepends the release notes to the `Changelog` page in the module documentation, making them available on this site.
 
 == Notes
 
@@ -71,26 +82,10 @@ Include a changelog summarizing the changes since the previous version.
 * If multiple modules are released together, keep their version numbers in sync.
 * The `CITATION.cff` on `dev` may lag behind `main` after a release — always verify and update it at the start of a new release cycle.
 
-== Automated release workflow
-
-Steps 4 and 5 (tagging and publishing the GitHub Release) are automated by the `release.yml` workflow present in every module repository.
-
-=== How it works
-
-After merging your PR to `main` (which already includes the version bump in `CITATION.cff`), trigger the release workflow manually:
-
-. Go to *Actions → Release Module → Run workflow* on GitHub.
-. Optionally add release notes in the input field.
-. Click *Run workflow*.
-
-The workflow will:
-
-. Read the version number directly from `CITATION.cff` on `main`.
-. Verify that the tag does not already exist (prevents accidental double releases).
-. Create and push an annotated tag `vx.y.z`.
-. Publish a GitHub Release with that tag.
-
-Once the release is published, the `notify-collection.yml` workflow fires automatically and triggers a collection rebuild (see <<collection-rebuild, Collection rebuild>> below).
+[WARNING]
+====
+Make sure the version in `CITATION.cff` on `main` is correct before running the release workflow. It reads the version directly and does not prompt for confirmation.
+====
 
 [WARNING]
 ====

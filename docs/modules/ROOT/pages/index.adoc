@@ -1,10 +1,41 @@
 = KIParla Documentation
 
-Welcome! Choose a project:
+KIParla is a corpus of spoken Italian built from recordings collected in university settings across Italy.
+This site documents the corpus modules, derived projects, and maintainer guides.
 
-* xref:lemmatization::index.adoc[Progetto lemmatizzazione]
+== Corpus modules
 
+The KIParla corpus is split into four modules, each maintained as an independent repository.
 
-* xref:KIP::index.adoc[KIP]
-* xref:KIPasti::index.adoc[KIPasti]
+[cols="1,3", options="header"]
+|===
+| Module | Description
 
+| xref:KIP::index.adoc[KIP]
+| Spoken Italian collected at the Universities of Bologna and Turin (2016–2019). ~70 hours, 121 conversations, 184 speakers.
+
+| xref:KIPasti::index.adoc[KIPasti]
+| KIP sub-corpus recorded in Asti.
+
+| xref:ParlaBO::index.adoc[ParlaBO]
+| Spoken Italian collected in Bologna.
+
+| xref:ParlaTO::index.adoc[ParlaTO]
+| Spoken Italian collected in Turin.
+|===
+
+All modules share the same file format and metadata schema.
+See any module's documentation for a full description of the data structure.
+
+The xref:collection::index.adoc[KIParla-collection] aggregates all four modules into a single downloadable release.
+
+== Derived projects
+
+Projects that use or extend KIParla data:
+
+* xref:lemmatization::index.adoc[Lemmatization project] — guidelines and tools for manual lemmatization and POS-tagging correction using Universal Dependencies.
+
+== Maintainer guides
+
+* xref:release-guide.adoc[Release guide] — how to release a new version of a module, including the automated tagging and collection rebuild workflows.
+* xref:collection-automation.adoc[Collection automation] — how the KIParla-collection rebuild pipeline works.

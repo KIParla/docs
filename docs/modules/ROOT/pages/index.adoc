@@ -34,8 +34,10 @@ The xref:collection::index.adoc[KIParla-collection] aggregates all four modules 
 Projects that use or extend KIParla data:
 
 * xref:lemmatization::index.adoc[Lemmatization project] — guidelines and tools for manual lemmatization and POS-tagging correction using Universal Dependencies.
+* xref:tools::index.adoc[KIParla tools] — standalone maintenance and transformation scripts for operational corpus workflows.
 
 == Maintainer guides
 
 * xref:release-guide.adoc[Release guide] — how to release a new version of a module, including the automated tagging and collection rebuild workflows.
 * xref:collection-automation.adoc[Collection automation] — how the KIParla-collection rebuild pipeline works.
+* xref:tools::workflows.adoc[Tools workflows] — where the standalone maintenance scripts fit in day-to-day and release operations.

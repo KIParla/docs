@@ -15,7 +15,7 @@ The KIParla corpus is split into four modules, each maintained as an independent
 | Spoken Italian collected at the Universities of Bologna and Turin (2016–2019). ~70 hours, 121 conversations, 184 speakers.
 
 | xref:KIPasti::index.adoc[KIPasti]
-| KIP sub-corpus recorded in Asti.
+| KIP sub-corpus recorded all over Italy.
 
 | xref:ParlaBO::index.adoc[ParlaBO]
 | Spoken Italian collected in Bologna.

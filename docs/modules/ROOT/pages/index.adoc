@@ -27,6 +27,13 @@ The KIParla corpus is split into four modules, each maintained as an independent
 All modules share the same file format and metadata schema.
 See any module's documentation for a full description of the data structure.
 
+== Transcription conventions
+
+All modules transcribe using the same xref:transcription-conventions.adoc[KIParla
+transcription conventions] (Jefferson notation adapted for spoken Italian).
+Where a module adds a symbol or narrows a rule, it is documented on that
+module's own *Transcription conventions* page.
+
 The xref:collection::index.adoc[KIParla-collection] aggregates all four modules into a single downloadable release.
 
 == Derived projects
@@ -35,6 +42,7 @@ Projects that use or extend KIParla data:
 
 * xref:lemmatization::index.adoc[Lemmatization project] — guidelines and tools for manual lemmatization and POS-tagging correction using Universal Dependencies.
 * xref:tools::index.adoc[KIParla tools] — standalone maintenance and transformation scripts for operational corpus workflows.
+* xref:nosketch:index.adoc[NoSketch data] — vertical and registry files for the KIParla NoSketch Engine instance at https://search.corpuskiparla.it/[search.corpuskiparla.it].
 
 == Maintainer guides
 

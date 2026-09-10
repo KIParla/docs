@@ -1,0 +1,89 @@
+// Canonical KIParla Jefferson symbol table.
+// Included verbatim by the universal conventions page and reusable by module
+// pages that need to show "the standard table plus our additions".
+// Keep this list in sync with the prose sections of transcription::index.adoc.
+
+[cols="1,2,4", options="header"]
+|===
+| Symbol | Meaning | Explanation
+
+| `,`
+| Weakly rising intonation
+| At the end of a token, marks weakly rising intonation.
+
+| `?`
+| Rising intonation
+| At the end of a token, marks rising intonation.
+
+| `.`
+| Falling intonation
+| At the end of a token, marks falling intonation.
+
+| `:`
+| Prolonged sound
+| A stretched sound, placed after the prolonged vowel or consonant. The number
+  of colons reflects the length of the prolongation.
+
+| `=`
+| Prosodically linked tokens
+| No gap or pause between the two tokens it joins (latching).
+
+| `(.)`
+| Short pause
+| A brief interval, usually between 0.08 and 0.2 seconds.
+
+| `TEXT`
+| Higher volume
+| Words in uppercase are pronounced louder than the surrounding speech.
+
+| `TEX~`
+| Interrupted token
+| A trailing `~` marks a cut-off token, usually a false start.
+
+| `°TEXT°`
+| Lower volume
+| Text between degree signs is pronounced more quietly than surrounding speech.
+
+| `>TEXT<`
+| Faster pace
+| Text between inward-pointing arrows is spoken more quickly.
+
+| `<TEXT>`
+| Slower pace
+| Text between outward-pointing arrows is spoken more slowly.
+
+| `[TEXT]`
+| Overlapping speech
+| Text in square brackets overlaps with another speaker's bracketed text.
+
+| `(TEXT)`
+| Hard-to-understand span
+| Text in round brackets is the transcriber's best guess at unclear speech.
+
+| `w(x)w`
+| Phonetically reduced form
+| Round brackets inside or touching a word enclose sounds of the canonical form
+  that were not pronounced (`c(io)è` = "cioè" heard as "cè"). Resolved to the
+  canonical spelling when whitelisted; otherwise read as a hard-to-understand
+  span.
+
+| `xxx`
+| Non-comprehensible sequence
+| Unintelligible speech. The number of `x`s roughly matches the number of
+  syllables.
+
+| `((TEXT))`
+| Non-verbal behaviour
+| Double parentheses enclose transcriber comments and non-verbal behaviour
+  (laughter, sighs, coughs, …), described in Italian. `((canta))` / `((legge))`
+  close a sung or read unit; musical inserts go on a separate `musica` tier.
+
+| `#word`
+| Non-Italian token
+| Marks a token that is certainly not Italian (dictionary test; geographic
+  synonyms count as Italian and are not marked).
+
+| `#_`
+| Non-Italian unit
+| At the start of a unit: the whole unit is in a code other than Italian.
+|===

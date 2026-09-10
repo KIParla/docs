@@ -1,0 +1,317 @@
+= KIParla transcription conventions
+:toc: macro
+:toclevels: 2
+
+KIParla transcriptions use the Jefferson notation system, adapted for spoken
+Italian. This page is the *shared reference* that every KIParla module follows.
+
+Individual modules may add symbols or narrow a rule for their own material.
+Where they do, it is documented on that module's own *Transcription conventions*
+page — see xref:#module-specific[Module-specific conventions] below.
+Anything not listed on a module page follows this page unchanged.
+
+toc::[]
+
+[#module-specific]
+== Module-specific conventions
+
+Each module's documentation carries a *Transcription conventions* page with two
+sections:
+
+Extensions:: symbols or uses that this page does not define, added by the module
+(for example a module-specific comment tag).
+Overrides:: cases where the module applies a stricter or different rule than the
+one stated here (for example a narrower timing range for `(.)`).
+
+Anything a module page does not mention follows this page unchanged. Module
+pages link back to the relevant section here by anchor (for example the
+`#overlap` or `#pauses` fragment of this page's URL) — the section anchors are
+stable, so keep them when editing.
+
+[cols="1,3", options="header"]
+|===
+| Module | Deviations from the shared conventions
+
+| xref:KIP::transcription-conventions.adoc[KIP]
+| _None recorded yet._
+
+| xref:KIPasti::transcription-conventions.adoc[KIPasti]
+| _None recorded yet._
+
+| xref:ParlaBO::transcription-conventions.adoc[ParlaBO]
+| _None recorded yet._
+
+| xref:ParlaTO::transcription-conventions.adoc[ParlaTO]
+| _None recorded yet._
+|===
+
+[#principles]
+== General principles
+
+Transcribe what is said:: Write what the speaker actually produces, not a
+corrected version. If a speaker says _le violenza_, transcribe `le violenza`.
+
+Capitalisation:: Capital letters mark xref:#volume[higher volume] only. Do *not*
+capitalise proper nouns, personal names, or place names.
+
+Numbers:: Always write numbers out in letters (`due`, not `2`), so that
+prolongations and overlaps can be transcribed on them. Arabic numerals are
+converted to Italian words automatically during processing (`NUMBERS` rule).
+
+Acronyms and initialisms:: Spell them out as they are *said* — the Italian
+letter-names as separate words, digits as words: `elle due`, not `l due`,
+`l 2`, or `LD`.
+
+Never lengthen `h`:: A prolonged vowel is marked on the *vowel*, never on a
+following `h`: write `e:::h`, not `eh:::` (see xref:#prolongation[Sound
+prolongation]).
+
+[#units]
+== Transcription units and silence
+
+A transcription unit begins and ends exactly when the speaker begins and ends
+the utterance. If there is silence at the start or end of a unit, the boundary
+is in the wrong place — move it, do not pad the unit with a pause.
+
+Do not run consecutive units together. Except in rare cases, units are kept
+apart using the (even very short) pauses that separate them.
+
+`(.)` is only for short pauses *inside* a unit — see xref:#pauses[Pauses].
+
+[#intonation]
+== Intonation
+
+Final punctuation on a token marks the intonation contour of that token. It is
+*not* orthographic punctuation.
+
+[cols="1,3", options="header"]
+|===
+| Symbol | Contour
+
+| `,` | Weakly rising
+| `?` | Rising
+| `.` | Falling
+|===
+
+A token with no final intonation mark carries level or unmarked intonation.
+
+[#prolongation]
+== Sound prolongation
+
+`:` marks a stretched sound and is placed immediately after the prolonged vowel
+or consonant (`ma:`, `bel:o`). Repeat the colon to show a longer stretch
+(`ma::`); the number of colons is proportional to the duration.
+
+Put the colon on the vowel, never on a following `h` (`e:::h`, not `eh:::`).
+An xref:#overlap[overlap bracket] may fall in the middle of a prolongation:
+`[e:]::h`.
+
+[#linking]
+== Prosodic linking (latching)
+
+`=` joins two tokens that follow each other with no gap or pause between them.
+It is written between the two linked tokens, which may belong to the same
+speaker or to different speakers.
+
+[#pauses]
+== Pauses
+
+`(.)` marks a short pause *within* a transcription unit, usually between 0.08
+and 0.2 seconds.
+
+* Never place `(.)` at the start or end of a unit — a leading or trailing pause
+  is removed automatically (`TRIM_PAUSES` rule). Silence at a unit edge means
+  the xref:#units[boundary] should move.
+* `(.)` is transcribed literally as a token. Longer, timed pauses follow the
+  conventions of the module's alignment layer rather than this notation.
+
+[#volume]
+== Volume
+
+[cols="1,3", options="header"]
+|===
+| Symbol | Meaning
+
+| `TEXT` (uppercase)
+| Louder than the surrounding speech. Applied to whole tokens. This is the
+  *only* use of capital letters — not proper nouns or place names.
+
+| `°TEXT°`
+| Quieter than the surrounding speech. The degree signs enclose the affected
+  span, which may be part of a token or several tokens.
+|===
+
+[#pace]
+== Pace
+
+[cols="1,3", options="header"]
+|===
+| Symbol | Meaning
+
+| `>TEXT<`
+| The enclosed span is spoken faster than the surrounding speech.
+
+| `<TEXT>`
+| The enclosed span is spoken slower than the surrounding speech.
+|===
+
+[#interrupted]
+== Interrupted tokens
+
+A trailing `~` marks a token that is cut off (`vole~`), typically a false start
+or self-repair. The `~` attaches directly to the truncated token with no space.
+
+[#overlap]
+== Overlapping speech
+
+`[` and `]` enclose the stretch of a token or tokens that overlaps with another
+speaker. The overlapping speakers' bracketed spans are aligned in the
+transcription so that the start of each `[` marks the same point in time.
+
+Use square brackets when *two speakers speak at the same time* — this is the
+important case and must always be marked.
+
+Do *not* use square brackets when:
+
+* one speaker is talking and another only laughs (or produces other non-verbal
+  behaviour);
+* speech runs over background music.
+
+Brackets may fall inside a token (`s[cherzavo]`) and may even split a
+xref:#prolongation[prolongation] (`[e:]::h`). They never split a non-verbal
+behaviour or a short pause: `((ri[de))]` is not valid — an `((...))` span or a
+`(.)` is either wholly inside or wholly outside an overlap.
+
+[#uncertain]
+== Uncertain and unintelligible speech
+
+[cols="1,3", options="header"]
+|===
+| Symbol | Meaning
+
+| `(TEXT)`
+| The transcriber's best guess at speech that is hard to make out. The round
+  brackets enclose the uncertain span.
+
+| `xxx`
+| Speech that cannot be made out at all. The number of `x`s roughly matches the
+  number of syllables heard.
+|===
+
+[#reduced]
+== Phonetically reduced forms
+
+Round brackets *inside or touching a word* mark sounds that belong to the
+canonical form of the word but were not pronounced — a phonetic reduction, not
+transcriber uncertainty. The letters outside the brackets are what was heard;
+the letters inside are the reduced-away part.
+
+[cols="1,1,2", options="header"]
+|===
+| Written | Canonical form | Heard as
+
+| `c(io)è` | cioè | "cè"
+| `sc(u)ola` | scuola | "scola"
+| `m(e l)o` | me lo | "melo" — a reduction spanning a word boundary
+|===
+
+A reduced form is resolved to its canonical spelling and the token(s) it covers
+are marked `Reduced=Yes` in the derived data. This only happens when the
+reconstructed word or phrase is on the module's *reduction whitelist* — see
+`reduction_words` in the module's
+https://github.com/KIParla/tools/blob/main/configs/defaults.yml[pipeline
+configuration]. A bracketed word-internal span whose reconstruction is *not*
+whitelisted is treated as an ordinary xref:#uncertain[uncertain span] instead.
+
+The whitelist is module-configurable: a module that reduces forms the shared
+list does not cover records them on its own *Transcription conventions* page and
+adds them to its config.
+
+[#nvb]
+== Non-verbal behaviour, noise and music
+
+`(( ))` encloses transcriber comments and non-verbal behaviour — laughter,
+sighs, coughs, gestures relevant to the interaction, and similar
+(`((ride))`, `((si schiarisce la voce))`). The text inside is a description, not
+a transcription, and is written in Italian.
+
+Reading and singing:: At the end of every unit that is read aloud or sung, add
+`((legge))` or `((canta))`.
+
+Background noise:: Transcribe a background noise only when it is relevant to the
+interaction. Routine ambient noise is left out.
+
+Music, jingles and inserts:: These are not put in the speech tiers. Report them
+on a dedicated `musica` tier, one entry per musical insert:
+`((sigla))`, `((canzone))`, and so on.
+
+[#language]
+== Language variation and code-switching
+
+Two markers record that speech is in a code other than standard Italian.
+
+`#` before a single token::
+Marks a token that is *certainly not Italian*. The test is the dictionary
+(e.g. https://dizionario.internazionale.it/[dizionario.internazionale.it]);
+because geographic synonyms (_geosinonimi_) are in the dictionary, they count
+as Italian and are *not* marked. If you are in doubt — for instance a form
+close to an Italian word — do *not* mark it.
+
+`#_` at the start of a unit::
+Marks that the *whole unit* is in a code other than Italian.
+
+In the derived data a `#` token gets `Variation=Token` and a `#_` unit is
+tagged as language variation on every token. The `#` marker set is
+module-configurable — some modules disable it or normalise its position; check
+the module's page.
+
+[#interjections]
+== Interjections, disfluencies and discourse markers
+
+Interjections, backchannels, filled pauses and discourse markers are transcribed
+with a *fixed canonical spelling* so the same vocalisation is always written the
+same way. Use the form in the left column; do not use the variants in the right
+column. The listed variants are corrected automatically during processing (the
+`WORD_CORRECTIONS` normalization rule; see the module
+https://github.com/KIParla/tools/blob/main/configs/defaults.yml[pipeline
+configuration]).
+
+[cols="1,3", options="header"]
+|===
+| Canonical form | Do not write
+
+| `cioè` (or the reduced form `c(io)è`)
+| `cè`, `ceh`
+
+| `mah`
+| `mha`
+
+| `ehm`
+| `emh`, `hem`
+
+| `eh`
+| `he`
+
+| `mh`
+| `m`, `hm`
+
+| `mhmh`
+| `mmh`
+
+| `hi`
+| `ih`
+
+| `vabbè`
+| `vabbe`, `va beh`, `va be'`, `va be`
+|===
+
+Never lengthen `h` (see xref:#prolongation[Sound prolongation]).
+
+Like the reduction whitelist, this list is module-configurable — a module may
+extend or replace it and documents any change on its own *Transcription
+conventions* page.
+
+[#symbol-table]
+== Symbol reference
+
+include::partial$symbols-table.adoc[]

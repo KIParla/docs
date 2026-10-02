@@ -42,7 +42,7 @@ Projects that use or extend KIParla data:
 
 * xref:lemmatization::index.adoc[Lemmatization project] — guidelines and tools for manual lemmatization and POS-tagging correction using Universal Dependencies.
 * xref:tools::index.adoc[KIParla tools] — standalone maintenance and transformation scripts for operational corpus workflows.
-* xref:nosketch:index.adoc[NoSketch data] — vertical and registry files for the KIParla NoSketch Engine instance at https://search.corpuskiparla.it/[search.corpuskiparla.it].
+* xref:nosketch:index.adoc[Searching KIParla] — how to search the corpus at https://search.corpuskiparla.it/[search.corpuskiparla.it], and the technical reference behind it.
 
 == Maintainer guides
 

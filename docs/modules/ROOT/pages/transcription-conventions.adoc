@@ -241,9 +241,18 @@ Reading and singing:: At the end of every unit that is read aloud or sung, add
 Background noise:: Transcribe a background noise only when it is relevant to the
 interaction. Routine ambient noise is left out.
 
-Music, jingles and inserts:: These are not put in the speech tiers. Report them
-on a dedicated `musica` tier, one entry per musical insert:
-`((sigla))`, `((canzone))`, and so on.
+The `environment` tier:: Everything that is not a participant's turn is *not* put in the
+speech tiers. It goes on one dedicated tier named `environment`:
+* background noise and sounds, one entry per event (`((televisione))`);
+* music, jingles and inserts, one entry per insert (`((sigla))`, `((canzone))`);
+* actions of a whole group (`((guardano il video))`);
+* speech that comes from an external source — a video, the television, the radio, a
+  recording played during the conversation. It is transcribed like any other speech
+  (including `#_` when it is not in Italian). When it is not in Italian, add its Italian
+  translation on a child tier `environment_trad`, like the `<speaker>_trad` tiers of the
+  speakers.
++
+`environment` is not a participant: it is not listed in the metadata of the conversation.
 
 [#language]
 == Language variation and code-switching

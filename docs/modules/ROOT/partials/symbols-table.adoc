@@ -76,7 +76,7 @@
 | Non-verbal behaviour
 | Double parentheses enclose transcriber comments and non-verbal behaviour
   (laughter, sighs, coughs, …), described in Italian. `((canta))` / `((legge))`
-  close a sung or read unit; musical inserts go on a separate `musica` tier.
+  close a sung or read unit; musical inserts, background noise and group actions go on a separate `environment` tier.
 
 | `#word`
 | Non-Italian token

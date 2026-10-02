@@ -4,6 +4,7 @@
 ** xref:KIPasti::transcription-conventions.adoc[KIPasti]
 ** xref:ParlaBO::transcription-conventions.adoc[ParlaBO]
 ** xref:ParlaTO::transcription-conventions.adoc[ParlaTO]
+** xref:ParlaBZ::transcription-conventions.adoc[ParlaBZ]
 ** xref:Stra-ParlaBO::transcription-conventions.adoc[Stra-ParlaBO]
 ** xref:Stra-ParlaTO::transcription-conventions.adoc[Stra-ParlaTO]
 * xref:nosketch:index.adoc[Searching KIParla]

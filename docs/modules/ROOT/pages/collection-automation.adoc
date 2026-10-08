@@ -39,7 +39,7 @@ The script normalises column differences between modules before merging:
 
 The merged `participants.tsv` keeps these columns: `code`, `occupation`, `gender`, `conversations`, `birth-region`, `age-range`, `study-level`.
 
-The merged `conversations.tsv` keeps these columns: `code`, `type`, `duration`, `participants-number`, `participants`, `participants-relationship`, `moderator`, `topic`, `year`, `collection-point`.
+The merged `conversations.tsv` keeps these columns: `code`, `type`, `duration`, `participants-number`, `participants`, `year`, `collection-point`.
 
 Rows with duplicate `code` values are deduplicated, keeping the first occurrence (module order: KIP → KIPasti → ParlaBO → ParlaTO).
 

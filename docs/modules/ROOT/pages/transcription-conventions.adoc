@@ -2,7 +2,7 @@
 :toc: macro
 :toclevels: 2
 
-KIParla transcriptions use the Jefferson notation system, adapted for spoken
+KIParla transcriptions use the enriched notation system, adapted for spoken
 Italian. This page is the *shared reference* that every KIParla module follows.
 
 Individual modules may add symbols or narrow a rule for their own material.

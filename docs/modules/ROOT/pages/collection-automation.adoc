@@ -16,7 +16,7 @@ When triggered, the `KIParla-collection` build workflow:
 
 . Clones the latest `main` branch of each module repo.
 . Copies all `.tsv` files into `tsv/` and all `.eaf` files into `eaf/`.
-. Regenerates `linear-jefferson/` and `linear-orthographic/` by running `tsv2formats.py` on every TSV file.
+. Regenerates `linear-enriched/` and `linear-orthographic/` by running `tsv2formats.py` on every TSV file.
 . Merges `participants.tsv` and `conversations.tsv` from all modules using `tools/merge_metadata.py`.
 . Commits and pushes any changes back to `KIParla-collection`.
 

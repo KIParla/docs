@@ -1,4 +1,4 @@
-// Canonical KIParla Jefferson symbol table.
+// Canonical KIParla enriched symbol table.
 // Included verbatim by the universal conventions page and reusable by module
 // pages that need to show "the standard table plus our additions".
 // Keep this list in sync with the prose sections of transcription::index.adoc.

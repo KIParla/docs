@@ -101,7 +101,7 @@ Every time a module release is published, the `build.yml` workflow in https://gi
 
 . Clones the latest `main` of all four module repos (KIP, KIPasti, ParlaBO, ParlaTO).
 . Syncs all TSV and EAF files into the collection.
-. Regenerates the linear-jefferson and linear-orthographic formats using `tools/tsv2formats.py`.
+. Regenerates the linear-enriched and linear-orthographic formats using `tools/tsv2formats.py`.
 . Merges metadata from all modules using `tools/merge_metadata.py`.
 . Increments the *patch version* of the collection in `CITATION.cff` and updates `date-released`.
 . Commits all changes and pushes to `main` of KIParla-collection.

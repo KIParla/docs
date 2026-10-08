@@ -30,7 +30,7 @@ See any module's documentation for a full description of the data structure.
 == Transcription conventions
 
 All modules transcribe using the same xref:transcription-conventions.adoc[KIParla
-transcription conventions] (Jefferson notation adapted for spoken Italian).
+transcription conventions] (enriched notation adapted for spoken Italian).
 Where a module adds a symbol or narrows a rule, it is documented on that
 module's own *Transcription conventions* page.
 

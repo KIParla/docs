@@ -5,7 +5,7 @@ This site documents the corpus modules, derived projects, and maintainer guides.
 
 == Corpus modules
 
-The KIParla corpus is split into four modules, each maintained as an independent repository.
+The KIParla corpus is split into seven modules, each maintained as an independent repository.
 
 [cols="1,3", options="header"]
 |===
@@ -22,6 +22,15 @@ The KIParla corpus is split into four modules, each maintained as an independent
 
 | xref:ParlaTO::index.adoc[ParlaTO]
 | Spoken Italian collected in Turin.
+
+| xref:ParlaBZ::index.adoc[ParlaBZ]
+| Spoken Italian collected in South Tyrol (2020–2022). ~5 hours, 10 conversations, 15 speakers.
+
+| xref:Stra-ParlaBO::index.adoc[Stra-ParlaBO]
+| Conversations and interviews collected in Bologna and its province with speakers of Italian as a foreign or second language.
+
+| xref:Stra-ParlaTO::index.adoc[Stra-ParlaTO]
+| Conversations and interviews collected in Turin and its province with speakers of Italian as a foreign or second language.
 |===
 
 All modules share the same file format and metadata schema.
@@ -34,7 +43,7 @@ transcription conventions] (enriched notation adapted for spoken Italian).
 Where a module adds a symbol or narrows a rule, it is documented on that
 module's own *Transcription conventions* page.
 
-The xref:collection::index.adoc[KIParla-collection] aggregates all four modules into a single downloadable release.
+The xref:collection::index.adoc[KIParla-collection] aggregates all seven modules into a single downloadable release.
 
 == Derived projects
 
